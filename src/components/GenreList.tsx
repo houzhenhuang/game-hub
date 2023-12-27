@@ -1,5 +1,6 @@
 import useGenres from "../hooks/useGenres";
-import { Text } from "@chakra-ui/react";
+import { HStack, List, ListItem, Text, Image } from "@chakra-ui/react";
+import getCroppedImageUrl from "../services/image-url";
 
 /**
  * 游戏类型列表
@@ -11,11 +12,20 @@ function GenreList() {
   return (
     <>
       {error && <Text>{error}</Text>}
-      <ul>
+      <List>
         {data.map((genre) => (
-          <li key={genre.id}>{genre.name}</li>
+          <ListItem key={genre.id} paddingY="5px">
+            <HStack>
+              <Image
+                boxSize="32px"
+                borderRadius={8}
+                src={getCroppedImageUrl(genre.image_background)}
+              />
+              <Text fontSize="lg">{genre.name}</Text>
+            </HStack>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </>
   );
 }
