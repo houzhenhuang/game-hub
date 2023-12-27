@@ -37,7 +37,7 @@ function GenreList({ selectedGenre, onSelectedGenre }: Props) {
               fontSize="lg"
               variant="link"
               onClick={() => onSelectedGenre(genre)}
-              isActive={selectedGenre && selectedGenre.id == genre.id}
+              fontWeight={selectedGenre?.id == genre.id ? "bold" : "normal"}
             >
               {genre.name}
             </Button>
